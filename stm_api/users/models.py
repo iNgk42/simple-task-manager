@@ -11,9 +11,16 @@ class UserCreate(UserBase):
 
 class UserInDb(UserBase):
     id: int
-    created_at: datetime = datetime.now().isoformat()
+    created_at: datetime = datetime.now().isoformat(timespec='seconds')
     passwordhash: str
 
 class UserRead(UserBase):
     id: int
     created_at: datetime
+
+class UserUpdate(UserCreate):
+    pass
+    
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
